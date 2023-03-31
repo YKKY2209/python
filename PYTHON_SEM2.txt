@@ -1,0 +1,1157 @@
+--- practical 1----
+
+#Q1open the file
+file=open('file1.txt','r')
+content=file.read()
+print(content)
+file.close()
+
+
+#Q2 using with statement
+with open ('file.txt','a') as f1:
+    f1.write('hello python')
+#Q3ber.read
+
+with open ('file1.txt','r') as file :
+    first_ten_char= file.read (10)
+    the_rest =file.read()
+    print("the first 10 characters are:",first_ten_char)
+    print("remaining charactrs are :",the_rest)
+
+#Q3b read line
+    with open('file1.txt','r') as file:
+        lines =file.readlines()
+    print(lines)
+#Q3 c read lines
+    with open('file1.txt','r') as file:
+        lines=file.readlines()
+        print (lines)
+
+#Q4read a file using for line
+with open('file1.txt','r') as data_file:
+    for line in data_file:
+        print(len(line.strip()))
+# Q5 print the element in sorted order
+with open ('file1.txt','r')as f1:
+    c=f1.readlines()
+    for p in sorted(c):
+        print(p.strip())
+
+#Q6 print in reverse
+with open ('file1.txt','r') as f2:
+    c=f2.readlines()
+    for p in reversed (c):
+        print(p.strip())
+#Q7read only even number
+def even(a):
+  if(a%2==0):
+    print(a)
+with open ('number.txt','r') as f1:
+    print("even number are")
+    for i in f1:
+        even(int(i.strip()))
+
+with open('number.txt','r') as f1:
+    sum=0
+    for i in f1:
+        a=int(i.strip())
+        sum= sum+a
+        print("summation=",sum)
+
+
+#summution
+with open ("number.txt","r")as f1:
+    sum=0
+    for i in f1:
+        a=int(i.strip())
+       
+        sum=sum+a
+print("summation =",sum)
+
+#skipheader
+def skip_header(file1):
+      data=file1.readline().strip()
+      return(data)
+def skip_comment(file2):
+      for i in file2:
+           if i.startswith("i"):
+              data.append(int(p))
+           else:
+                  print(i.strip())
+with open ("header.txt","r")as file3:
+      skip_header(file3)
+      skip_comment(file3)
+
+
+
+#11#smallest interger form the list
+#smallest interger form the list
+with open ("number2.txt","r")as f2:
+    list1=[]
+    for i in f2:
+      a=i.split()
+      for p in a:
+           if p.startswith('1')or p.startswith('2')or p.startswith('3')or p.startswith('4')or p.startswith('5')or p.startswith('6'):
+             list1.append(int(p))
+           else:
+             continue
+
+print("smallest integer:",min(list1))
+
+#12 to read interger from file and putin list1
+with open ("number.txt","r")as f1:
+    list1=[]
+    for i in f1:
+        a=i.split()
+        for p in a:
+            if p.startswith("1")or p.startswith("2")or p.startswith("3")or p.startswith("4"):
+                list1.append(int(p))
+            else:
+                             continue
+even_list=[]
+odd_list=[]
+for i in list1:
+    if[i%2==0]:
+        even_list.append(i)
+    else:
+            odd_list.append(i)
+with open("odd.txt","w")as f2:
+    str1=str(odd_list)
+    f2.write(str1)
+with open("even.txt","w")as f2:
+    str2=str(even_list)
+
+           
+#cheeck whether the files exits or not
+import os.path
+
+file_exists = os.path.exists('number.txt')
+if (not os.path.isfile((file_exists))):
+                print("error!!!!!!!!!!file not found")
+else:
+                print("ile found")
+
+
+
+import os.path
+
+file_exists = os.path.exists('number.txt')
+
+print(file_exists)
+
+
+#tell and seek function
+b1=open("number.txt","r+")
+str1=b1.read(15)
+print("string is:",str1)
+
+
+----------- PRACTICAL 2 ----------
+
+#q.1
+import re
+pattern=re.compile("th[ab]*")
+result=pattern.match("the saurus")
+if result==None:
+    print("no match")
+else:
+    print("match")
+
+#q.2
+import re
+pattern=re.compile("th[ab]?")
+result=pattern.match("the saurus")
+if result==None:
+    print("no match")
+else:
+    print("match")
+
+#q.3
+import re
+pattern=['python','standard']
+str1='python is a high language'
+for i in pattern:
+    print('finding "%s" in "%s"->'%(pattern,str1)
+    if re.search(i,str1):
+        print('match found')
+    else:
+        print('no match')
+
+#q.4
+       
+string1='a=5\nb=6\n sum=a+b\n print("sum=",sum)'
+object1=compile[string1,'sum string','exec')
+exec(object1)
+
+#q.5
+import re
+pat='python'
+str1='python is a high level language'
+ml=re.search(pat,str1)
+s=ml.start()
+print(s)
+e=ml.end()
+print(e)
+sp=ml.span()
+print(sp)
+sp1=ml.span()[0]
+print(sp1)
+sp2=ml.span()[1]
+print('the pattern "%s" is found in "%s" from "%d" to "%d"("%s")'%(ml.re.pattern,ml.string,s,e,str1[s:e]))
+
+#q.6
+import re
+pat='high'
+str1="python is a high level language"
+print("string:",str1)
+print("pattern:",pat)
+ml=re.match(pat,str1)
+print("if any match found?:,m1)
+
+str2="high voltage are dangerous"
+print("string:",str2)
+print("pattern:",pat)
+m2=re.match(pat,str2)
+print("if any match found?:,m2)
+
+#q.7
+
+import re
+pat='python'
+str1="python is a high level language.python is nice."
+print('using findall()function')
+for m in re.findall(pat,str1):
+    print('found"%s" in "%s" ',%(pat,str1))
+print("using search()function")
+if re.search(pat,str1):
+    print("a match is found")
+else:
+    print("no match")
+
+#q.8
+import re
+lines=["fname:abc,lname:xyz,designation:developer","fname:def,lname:abs,designation:tester"]
+print("using regular expression splite")
+for line in lines:
+    print(re.split(",,**\w:",line))
+
+#q.9
+import re
+string="python is my favourite language.python is high language."
+print(string)
+result=re.sub("python","java",string)
+print(result)
+
+
+-----PRACTICAL 3-----
+
+#q.1
+#to check the value of time attributes
+import datetime
+a=datetime.time(7,42,30)
+print(a)
+print("hour is ",a.hour)
+print("minute is ",a.minute)
+print("second is ",a.second)
+print("microsecond is ",a.microsecond)
+
+#q.2
+#to check the value of date attributes
+import datetime
+current_day=datetime.date.today()
+print(current_day)
+print('ctime is',current_day.ctime())
+print('tuple is',current_day.timetuple())
+print('ordinal is',current_day.toordinal())
+print('year is',current_day.year)
+print('month is',current_day.month)
+print('day is',current_day.day)
+
+#q.3
+#to print the date time of the year now
+import datetime
+dtnow=datetime.datetime.now()
+print("current year: %d" %dtnow.year)
+print("current month: %d" %dtnow.month)
+print("current day : %d" %dtnow.day)
+print("current hour : %d" %dtnow.hour)
+print("current minute : %d" %dtnow.minute)
+print("current second : %d" %dtnow.second)
+print("current microsecond : %d" %dtnow.microsecond)
+
+#q.4
+#to print the values of different attributes of time and date from datetime instance
+import datetime
+print("present datetime:",datetime.datetime.now())
+print("datetime of today:",datetime.datetime.today())
+print("present UTC:",datetime.datetime.utcnow())
+x=datetime.datetime.now()
+for var in['year','month','day','hour','minute','second','microsecond']:
+    print(var,'is',getattr(x,var))
+
+#q.5
+#to format the dates and time
+import datetime
+format="%a %b %d %H: %M: %S %Y"
+today=datetime.datetime.today()
+print("printing datetime as per ISO:",today)
+x=today.strftime(format)
+print("printing datetime using strftime:",x)
+y=datetime.datetime.strptime(x,format)
+print("printing datetime using strptime:",y.strftime(format))
+
+#q.6
+#to find duration using timedelta
+import datetime
+print("printing the value of seconds:",datetime.timedelta(seconds=5))
+print("printing the value of hours:",datetime.timedelta(hours=5))
+print("printing the value of days:",datetime.timedelta(days=5))
+print("printing the value of weeks:",datetime.timedelta(weeks=5))
+print("printing the value ofomicrpseconds:",datetime.timedelta(microseconds=5))
+print("printing the value of milliseconds:",datetime.timedelta(milliseconds=5))
+
+
+#q.7a
+#to compare two dates
+import datetime
+import time
+print("times comparison")
+time1=datetime.time(10,45,0)
+print("\ttime1:",time1)
+time2=datetime.time(11,8,0)
+print("\ttime2:",time2)
+time3=datetime.time(14,10,0)
+print("\ttime3:",time3)
+print("ttime1<time2:",time1<time2)
+print("ttime2<time3:",time2<time3)
+print("ttime3==time1:",time3<time1)
+print("dates comparison:")
+date1=datetime.date.today()
+print("\tdate1:",date1)
+date2=datetime.date.today()
+print("\tdate2:",date2)
+date3=datetime.date.today()
+print("\tdate3:",date3)
+print("\tdate3:",date3)
+print("\tdate1>date2:",date1>date2)
+print("\tdate2>date3:",date2>date3)
+print("\tdate3==date1:",date3==date1)
+
+
+#q.7b
+from datetime import datetime
+list_of_dates=['18/dec/18','28/apr/17','01/dec/16','09/mar/17']
+list_of_dates.sort(key=lambda date:datetime.strptime(date,"%d/%b/%y"))
+print(list_of_dates)
+
+
+#q.8
+import time
+#sleep for 5 seconds
+time.sleep(5)
+print("printing after 5 seconds")
+#sleep for 10 seconds
+time.sleep(10)
+print("printing after 10 seconds")
+#sleep for 3 seconds
+time.sleep(3)
+print("printing after 3 seconds")
+
+#q.9
+#to check the execution time of program
+import time
+start_time=time.time()
+#providing marks of 5 subjects
+a=5
+b=3
+c=7
+d=11
+e=18
+#calculate average
+avg=(float(a)+float(b)+float(c)+float(d)+float(e))/5
+print("average marks of 5 subjects= ",avg)
+end_time=time.time()
+print("time taken to excute the program ",end_time-start_time)
+
+#q.10
+#prmonth() function
+import calendar
+x=calendar.TextCalendar(calendar.SUNDAY)
+x.prmonth(2018,7)
+
+#formatmonth() function
+y= calendar.HTMLCalendar(calendar.SUNDAY)
+print(y.formatmonth(2018,7))
+
+#q.11
+#to add 8 days from the current date
+from datetime import date,timedelta
+new_date=date.today()+timedelta(8)
+print("current date: ",date.today())
+print("after 8 days,date will be: ",new_date)
+
+#q.12
+#to get the date of the last monday
+from datetime import date
+from datetime import timedelta
+today=date.today()
+offset=(today.isoweekday())%7
+print("offset=",offset)
+last_sat=today-timedelta(days=offset)
+print("last saturday was on ",last_sat)
+
+
+------PRACTICAL 4------
+
+#1a
+
+#without using thread class
+import threading
+import time
+print("without class")
+def loop1():
+    for i in range(10,20):
+        print(i)
+threading.Thread(target=loop1).start()
+
+
+#1b
+# by creating a Thread class
+
+import threading
+class Thread1(threading.Thread):
+    def __init__(self,x):
+        self._x=x
+        threading.Thread.__init__(self)
+    def run(self):
+        print(str(self._x))
+for x in range(5):
+    Thread1(x).start()
+
+
+
+#1C
+#with thread subclass
+import threading
+import time
+exitFlag=0
+class MainThread(threading.Thread):
+    def __init__(self,threadID,name,counter):
+        threading.Thread.__init__(self)
+        self.threadID = threadID
+        self.name = name
+        self.counter = counter
+    def run(self):
+        print("Start the new sub thread "+self.name)
+        print_time(self.name,self.counter,5)
+        print("Exit the sub thread "+self.name)
+
+def print_time(threadName,delay,counter):
+    while counter:
+        if exitFlag:
+            threadName.exit()
+        time.sleep(delay)
+        print("%s: %s" %(threadName,time.ctime(time.time())))
+        counter-=1
+
+thread1=MainThread(1,"Thread 1",1)
+thread2=MainThread(2,"Thread 2",2)
+
+thread1.start()
+thread2.start()
+thread1.join()
+thread2.join()
+print("Exit Main Thread")
+
+
+#2
+#multitasking
+import threading
+import time
+def area(l,b):
+    print("Area of rectangle:{}\n".format(l*b))
+def peri(l,b):
+    print("Perimeter of rectangle:{}\n".format(2*(l+b)))
+
+if __name__=="__main__":
+    t1=threading.Thread(target=area,args=(5,20))
+    t2=threading.Thread(target=peri,args=(5,20))
+
+    t1.start()
+    t2.start()
+
+    t1.join()
+    t2.join()
+
+    print("Multitasking successful!")
+
+
+#3
+#Daemon threads
+import threading
+import time
+def function_a():
+    print("Starting of thread:",threading.currentThread().name)
+    time.sleep(2)
+    print("Finishing of thread:",threading.currentThread().name)
+def function_b():
+    print("Starting of thread:",threading.currentThread().name)
+    print("Finishing of thread:",threading.currentThread().name)
+
+a=threading.Thread(target=function_a,name="Thread-a",daemon=True)
+b=threading.Thread(target=function_b,name="Thread-b")
+a.start()
+b.start()
+
+
+#4 
+#Threading module
+import threading
+
+def trace_function():
+    print("Passing Trace Function")
+def profile():
+    print("Setting Profile Thread: ",str(threading.current_thread().getName))
+class thread(threading.Thread):
+    def _init_(self,thread_name,thread_ID):
+        threading.Thread._init_(self)
+        self.thread_name=thread_name
+        self.thread_ID=thread_ID
+    def run(self):
+        print(str(self.thread_ID))
+    print("Number of active threads: ",str(threading.active_count()))
+    print("Number of current thread: ",str(threading.current_thread().getName))
+
+
+#5 
+#thread square and cube
+import threading
+def print_cube(num):
+    """
+        function to print cube of a given number
+    """
+    print("cube: ()".format(num*num*num))
+def print_square(num):
+    """
+        function to print square of a given number
+    """
+    print("square: ()".format(num*num))
+if __name__=="__main__":
+    #creating threads
+    t1=threading.Thread(target=print_square,args=(20,))
+    t2=threading.Thread(target=print_square,args=(30,))
+    #starting thread1
+    t1.start()
+    #starting thread2
+    t2.start()
+    #wait until thread1 is completely executed
+    t1.join()
+    #wait until thread2 is completely executed
+    t2.join()
+    #both threads completely executed
+    print("programs executed sucessfully")
+    
+-------PRACTICAL 5-----
+
+#draw a line
+from tkinter import*
+top=Tk()
+c=Canvas(top,height=350,width=400)
+coord=180,150,300,200
+line=c.create_line(coord,fill="black")
+c.pack()
+top.mainloop()
+
+#draw an arc and fill it with red colour
+from tkinter import*
+top=Tk()
+c=Canvas(top,height=350,width=400)
+coord=180,150,300,200
+arc=c.create_arc(coord,fill="red")
+c.pack()
+top.mainloop()
+
+#Draw a circle
+from tkinter import*
+top=Tk()
+c=Canvas(top,height=350,width=400)
+coord=180,180,210,210
+arc=c.create_oval(coord)
+c.pack()
+top.mainloop()
+
+#Draw an ellipse and fill it with some colour
+from tkinter import*
+top=Tk()
+c=Canvas(top,height=350,width=400)
+coord=180,110,90,75
+ellipse=c.create_oval(coord,fill="orange")
+c.pack()
+top.mainloop()
+
+#radio button from 0 to 2 with option number 1,2,3
+import tkinter
+from tkinter import*
+
+def sel():
+    selection="you selected the option"+str(var.get())
+    Label.config(text=selection)
+root=Tk()
+var=IntVar()
+r1=Radiobutton(root,text="option1",variable=var,value=1,command=sel)
+r1.pack()
+r2=Radiobutton(root,text="option2",variable=var,value=2,command=sel)
+r2.pack()
+r3=Radiobutton(root,text="option3",variable=var,value=3,command=sel)
+r3.pack()
+Label=Label(root)
+Label.pack()
+root.mainloop()
+
+#check hobbies in checkbox and display the result of selection
+from tkinter import*
+def box():
+    print("selected")
+top=Tk()
+checkvar1=IntVar()
+checkvar2=IntVar()
+c1=Checkbutton(top,text="music",variable=checkvar1, onvalue=1,offvalue=0,height=5,width=2,command=box)
+c2=Checkbutton(top,text="video",variable=checkvar2, onvalue=1,offvalue=0,height=5,width=2,command=box)
+c1.pack()
+c2.pack()
+top.mainloop()
+
+#display programming languages in listbox
+from tkinter import*
+top=Tk()
+lb=Listbox(top)
+lb.insert(1,"python")
+lb.insert(2,"C")
+lb.insert(3,"C++")
+lb.insert(4,"JAVA")
+lb.insert(5,"Ruby")
+lb.pack()
+top.mainloop()
+
+
+#display button "goodbye" when clicked application should close
+import tkinter
+from tkinter import*
+window=tkinter.Tk()
+frame=tkinter.Tk()
+frame=tkinter.Frame(window)
+frame.pack()
+button=tkinter.Button(frame,text="good bye", command=lambda:window.destroy())
+button.pack()
+window.mainloop()
+
+#single button named zero, each time clicked it is incremented by 1
+import tkinter
+from tkinter import *
+def increment(text):
+    count=int(text.get())
+    text.set(str(count+1))
+window=tkinter.Tk()
+frame=tkinter.Tk()
+frame=tkinter.Tk()
+frame=tkinter.Frame(window)
+frame.pack()
+text=tkinter.StringVar()
+text.set('0')
+Button=tkinter.Button(frame,textvar=text,command=lambda:increment(text))
+Button.pack()
+window.mainloop()
+
+#display a label with text "this is label GUI"
+import tkinter
+from tkinter import *
+root=Tk()
+lb=Label(root,text="this is label GUI program",font=("times",30,"italic"),bg="lightgrey",fg="white")
+lb.pack()
+root.mainloop()
+
+#four coloured button
+import tkinter
+from tkinter import *
+root=Tk()
+redbutton=Button(root,text="RED",fg="red")
+redbutton.pack(side=LEFT)
+greenbutton=Button(root,text="GREEN",fg="green")
+greenbutton.pack(side=LEFT)
+brownbutton=Button(root,text="BROWN",fg="brown")
+brownbutton.pack(side=LEFT)
+blackbutton=Button(root,text="BLACK",fg="black")
+blackbutton.pack(side=LEFT)
+root.mainloop()
+
+#ADD and QUIT button
+import tkinter
+from tkinter import *
+def add():
+    n=7+8
+    label.config(text=n)
+    #print("addition is",n)
+root=Tk()
+f1=Frame()
+f1.pack()
+label=Label(root,text="")
+label.pack()
+b_add=Button(f1,text="ADD",command=add)
+b_add.pack(side=RIGHT)
+b_quit=Button(f1,text="QUIT",command=quit)
+b_quit.pack(side=LEFT)
+root.mainloop()
+
+#DNA sequence
+import tkinter
+from tkinter import *
+def count(text,out_data):
+    data=text.get("0.0",tkinter.END)
+    counts={}
+    for char in "ATCG":
+        counts[char]=data.count(char)
+    out_data.set("Num As:{0} Num To:{1} Num Ca:{2} Num Gs{3}".format(counts['A'],counts['T'],counts['C'],counts['G']))
+window=tkinter.Tk()
+t1=tkinter.Text(window,height=10,width=40)
+t1.pack()
+out_data=tkinter.StringVar()
+b1=tkinter.Button(window,text="COUNT",command=lambda:count(t1,out_data))
+b1.pack()
+L1=tkinter.Label(window,textvar=out_data)
+L1.pack()
+window.mainloop()
+
+
+-------PRACTICAL 6------
+
+#practical number 6
+#1
+x=10
+y=20
+try:
+    print("x:",x)
+    print(z)
+except NameError:
+    print("y:",y)
+   output:
+x: 10
+y: 20
+#2
+First=3
+Second=9
+Third=Second/First
+print("Ans=",Third)
+try:
+    fourth=int(input("enter a value"))
+    third=Second/fourth
+    print("ans=",Third)
+except ValueError:
+    print("please enter a valid input")
+except ZeroDivisionError:
+    print("zero not allowed")
+except ArithmeticError:
+    print("please enter value greater than zero")
+ 
+ 
+ 
+#3
+first=3
+second=9
+third=second/first
+print("ans=",third)
+try:
+    fourth=int(input("enter a value"))
+    fifth=third/fourth
+    print("ans=",fifth)
+except ArithmeticError:
+    print("zero not allowed")
+else:
+    print("succes")
+    
+#4
+def student(sub_marks):
+    assert len(sub_marks)!=0,"no value found"
+    return sum(sub_marks)/len(sub_marks)
+student1=[10,0,30]
+student2=[]
+print("avg marks of student1 = ",student(student1))
+print("avg marks of student2 = ",student(student2))
+ 
+#5
+class UserException(Exception):
+    def init(self):
+        self.demo="you created a user defined exception"
+try:
+    print("demo for a user defined exception")
+    raise UserException
+except UserException:
+    print(UserException().demo)
+
+
+
+
+------PRACTICAL 7 -----
+
+-----PRACTICAL 8 -----
+
+
+Server side
+
+import socket
+import time
+serversocket=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+host=socket.gethostname()
+port=9999
+serversocket.bind((host,port))
+serversocket.listen(5)
+while True:
+    clientsocket,addr=serversocket.accept()
+    print("connected to %s" % str(addr))
+    currentTime= time.ctime(time.time())+"\r\n"
+    clientsocket.send(currentTime.encode('ascii'))
+    clientsocket.close()
+
+note: save this file then close the idle run this file from where it is saved
+
+
+client side:
+import socket
+s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+host=socket.gethostname()
+port=9999
+s.connect((host,port))
+tm=s.recv(1024)
+s.close()
+print("the time is: %s" % tm.decode('ascii'))
+
+
+note: run this file from idle only
+
+
+----PRACTICAL 9----
+
+Q.1)
+
+class Parent():
+    def method_Class1(self):
+        print("Hi ! I am a parent Class !")
+    def display_Parent(self):
+        print("this is parent class")
+class Child(Parent):
+    def display_Child(self):
+        print("Hi ! You are in the method of Child Class!")
+obj=Child()
+obj.display_Parent()
+obj.display_Child()
+obj.method_Class1()
+
+
+Q.2)
+
+class subset:
+    def func1(self,s1):
+        return self.func2([],sorted(s1))
+    def func2(self,curr,s1):
+        if s1:
+            return self.func2(curr,s1[1:])+self.func2(curr+[s1[0]],s1[1:])
+        return[curr]
+x=[]
+n=int(input("entr no. of elements of list"))
+for i in range(0,n):
+    y=int(input("Enter an element"))
+    x.append(y)
+#displaying subsets
+print("Subsets are:")
+print(subset().func1(x))
+
+Q.3)
+
+#Python prog that illustrates the concept of polymorphism
+class Book:
+    #constructor
+    def __init__(self,name,author):
+        self.name=name
+        self.author=author
+    #abstract method, defined by convention only
+    def func1(self):
+        raise NotImplementedError("Subclass must implement abstract method")
+#define class as subject and inherit book
+class subject(Book):
+    #redefine method with same name as super class
+    def func1(self):
+        return self.author
+#define class as Python and inherit book
+class Python(Book):
+    #redefine method with same name as super class
+    def func1(self):
+        return self.author
+#Array of objects
+books=[subject('java','Adam'),Python('simple python','Jim'),subject('Advanced java','Andrew')]
+for book in books:
+    print('Book Name:',book.name, 'and', 'author of book:',book.func1())
+
+
+Q.4)
+
+#to illustrate constructor
+class Comp_Number:
+    def __init__(self, r=0,i=0):
+        self.real=r
+        self.imag=i
+    def getData(self):
+        print("{0}+{1}j".format(self.real,self.imag))
+#creating new complex number
+c1=Comp_Number(2,3)
+#call get data function
+c1.getData()
+#create another object and create new attribute
+c2=Comp_Number(5)
+c2.attr=10
+#displaying output
+print((c2.real,c2.imag,c2.attr))
+
+Q.5)
+
+#to append, delete and display list element using class
+class Program():
+    def __init__(self):
+        self.n=[]
+    def add(self,a):
+        return self.n.append(a)
+    def remove(self,b):
+        self.n.remove(b)
+    def display(self):
+        return(self.n)
+obj=Program()
+select=1
+while select!=0:
+    print("1. Add an element to a list")
+    print("2. Delete an element from a list")
+    print("3. Display list")
+    print("4. Exit")
+    select=int(input("Enter your choice"))
+    if select==1:
+        n=int(input("Enter a number to add"))
+        obj.add(n)
+        print("List is:",obj.display())
+    elif select==2:
+        n=int(input("Enter a number to be removed"))
+        obj.remove(n)
+        print("List is:",obj.display())
+    elif select==3:
+        print("List is:",obj.display())
+    elif select==4:
+        print("Exiting")
+    else:
+        print("Please enter valid choice")
+print()
+
+
+Q.6)
+
+#define two methods in a class
+class Program():
+    def __init__(self):
+        self.string=""
+    #first method to input string
+    def inp(self):
+        self.string=input("entr a string")
+    #Second method to display string
+    def display(self):
+        print("User has enter following string:")
+        print(self.string)
+obj=Program()
+obj.inp()
+obj.display()
+
+    
+Q.7)
+
+#area of rectangle using class
+class Area():
+    def __init__(self,r_length,r_breadth):
+        self.r_breadth=r_breadth
+        self.r_length=r_length
+    def calculate(self):
+        return self.r_breadth*self.r_length
+#input length
+first=int(input("please enter the lenght for rectangle"))
+#input breadth
+second=int(input("please enter the breadth for rectangle"))
+obj=Area(first,second)
+print("Area of rectangle:",obj.calculate())
+
+
+Q.8)
+
+#simple calculator using class
+class Calculator():
+    def __init__(self,first,second):
+        self.first=first
+        self.second=second
+    def addition(self):
+        return self.first+self.second
+    def subtraction(self):
+        return self.first-self.second
+    def multiplication(self):
+        return self.first*self.second
+    def division(self):
+        return self.first/self.second
+first=int(input("Enter a number"))
+second=int(input("Enter another number"))
+obj=Calculator(first,second)
+select=1
+while select!=0:
+    print("1. Add")
+    print("2. suntract")
+    print("3. Multiply")
+    print("4. Divide")
+    print("5. Exit")
+    select=int(input("Enter your choice"))
+    if select==1:
+        print("add= ",obj.addition())
+    elif select==2:
+        print("subtract= ",obj.subtraction())
+    elif select==3:
+        print("Multiplication= ",obj.multiplication())
+    elif select==4:
+        print("division= ",obj.division())
+    elif select==5:
+        print("Exit!! ")
+    else:
+        print("Wrong choice")
+    
+Q.9)
+
+#Define and return instance variable inside class method
+class Student:
+    #class variable
+    subject='cse'
+    def __init__(self,contact):
+        #instance variable
+        self.contact=contact
+        print("contact details of student is ",contact)
+    #Adds an instance variable
+    def setAddress(self,address):
+        self.address=address
+    #review instance variable
+    def getAddress(self):
+        return self.address
+obj=Student(5521)
+obj.setAddress("Mumbai")
+print(obj.getAddress())
+
+
+Q.10)
+
+
+
+Q.11)
+
+#to show both inheritance and polymorphism
+class Vehicle(object):
+    def __init__(self,name):
+        self.name=name
+    def cap(self):
+        print(self.name,'accomodate',self.capacity())
+#inherited class velicle
+class Car(Vehicle):
+    def __init__(self,name):
+        super(Car,self).__init__(name)
+    #method overloading of polymorphism
+    def capacity(self):
+        return '5'
+class Bus(Vehicle):
+    def __init__(self,name):
+        super(Bus,self).__init__(name)
+    #method overloading of polymorphism
+    def capacity(self):
+        return '40'
+class Scooter(Vehicle):
+    def __init__(self,name):
+        super(Scooter,self).__init__(name)
+    #method overloading of polymorphism
+    def capacity(self):
+        return '2'
+if __name__=='__main__':
+    a=Bus("bus can ")
+    a.cap()
+    b=Car("car can ")
+    b.cap()
+    c=Scooter("scooter can ")
+    c.cap()
+          
+-------PRACTICAL 10 -----
+
+#q1
+from abc import ABC, abstractmethod
+class AbsBaseClass(ABC):
+        def __init__(self):
+                print("I am the constructor of the abstract class")
+        @abstractmethod
+        def abstramth(Self):
+                        pass
+        def concremethod(self):
+                        print("I am a  concrete method")
+class Derived(AbsBaseClass):
+      def abstramth(self):
+              print("I am a redefined abstract method")
+o = Derived()
+o.abstramth()
+o.concremethod()
+
+
+#Q2
+from abc import ABC, abstractmethod
+class AbsBaseClass(ABC):
+        def __init__(self):
+                print("I am the constructor of the abstract class")
+        @abstractmethod
+        def abstramth(Self):
+                print("I am a abstract method")
+        def concremethod(self):
+                        print("I am a  concrete method")
+class Derived(AbsBaseClass):
+      def abstramth(self):
+              super().abstramth()
+              print("I am a redefined abstract method ,redifined")
+o = Derived()
+o.abstramth()
+o.concremethod()
+               
+
+#Q3
+
+from abc import ABC, abstractmethod
+class interface(ABC):
+        @abstractmethod
+        def abstraMeth1(self):
+                pass
+        @abstractmethod
+        def abstraMeth2(self):
+                pass
+class Derived(interface):
+        def abstraMeth1(self):
+            print("Abstract Method 1 defined")
+        def abstraMeth2(Self):
+            print("Abstract Method 2 defined")
+o = Derived()
+print("Interface Method defined")
+o.abstraMeth1()
+o.abstraMeth2()
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
